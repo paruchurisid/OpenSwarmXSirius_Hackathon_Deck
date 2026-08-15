@@ -9,13 +9,7 @@
   var hint = document.getElementById('hint');
   var scaler = document.getElementById('scaler');
 
-  var DEFAULT_DWELL = 7000;
-  var DWELL = { 0: 6000, 2: 9000, 6: 9000, 12: 9000, 13: 12000 };
-
-  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var autoplay = new URLSearchParams(location.search).get('autoplay') !== '0';
-
-  var i = 0, timer = null, rafId = null, paused = !autoplay, startedAt = 0, dwell = DEFAULT_DWELL;
+  var i = 0;
 
   /* progress: one segment per slide */
   var segs = slides.map(function () {
@@ -24,32 +18,11 @@
     return el;
   });
 
-  function paintProgress(pct) {
+  function paintProgress() {
     for (var k = 0; k < segs.length; k++) {
       segs[k].className = k < i ? 'past' : (k === i ? 'cur' : '');
     }
-    segs[i].style.setProperty('--pct', reduced || paused ? 1 : (pct || 0));
-  }
-
-  function tick() {
-    var pct = Math.min(1, (performance.now() - startedAt) / dwell);
-    segs[i].style.setProperty('--pct', pct);
-    if (pct < 1) rafId = requestAnimationFrame(tick);
-  }
-
-  function clearTimers() {
-    if (timer) { clearTimeout(timer); timer = null; }
-    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-  }
-
-  function arm() {
-    clearTimers();
-    paintProgress(0);
-    if (paused) return;
-    dwell = DWELL[i] || DEFAULT_DWELL;
-    startedAt = performance.now();
-    rafId = requestAnimationFrame(tick);
-    timer = setTimeout(function () { show(i + 1); }, dwell);
+    segs[i].style.setProperty('--pct', 1);
   }
 
   /* re-run entrance animations when a slide is revisited */
@@ -77,22 +50,7 @@
       var h = '#' + (i + 1);
       if (location.hash !== h) history.replaceState(null, '', h);
     }
-    arm();
-  }
-
-  function setPaused(p) {
-    paused = p;
-    document.body.classList.toggle('paused', paused);
-    hint.textContent = paused ? 'paused · press space to resume' : 'auto-advancing · press space to pause';
-    hint.style.opacity = .8;
-    if (paused) { clearTimers(); paintProgress(1); } else arm();
-    if (!paused) fadeHint();
-  }
-
-  var hintTimer;
-  function fadeHint() {
-    clearTimeout(hintTimer);
-    hintTimer = setTimeout(function () { if (!paused) hint.style.opacity = 0; }, 4500);
+    paintProgress();
   }
 
   function fit() {
@@ -113,14 +71,6 @@
   addEventListener('resize', fit);
   addEventListener('hashchange', function () { show(fromHash(), true); });
 
-  addEventListener('keydown', function (e) {
-    if (e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); setPaused(!paused); return; }
-    if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); show(i + 1); }
-    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(i - 1); }
-    else if (e.key === 'Home') { e.preventDefault(); show(0); }
-    else if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
-  });
-
   /* click zones: left third back, right two-thirds forward */
   addEventListener('click', function (e) {
     if (e.target.closest('#nav') || e.target.closest('a')) return;
@@ -129,17 +79,7 @@
 
   document.getElementById('prev').addEventListener('click', function () { show(i - 1); });
   document.getElementById('next').addEventListener('click', function () { show(i + 1); });
-  document.getElementById('pause').addEventListener('click', function () { setPaused(!paused); });
-
-  /* background tabs throttle timers — re-arm so the deck doesn't skip ahead */
-  document.addEventListener('visibilitychange', function () {
-    if (!document.hidden && !paused) arm();
-  });
-
   fit();
   show(fromHash(), true);
-  if (paused) {
-    document.body.classList.add('paused');
-    hint.textContent = 'manual · arrows or click to advance';
-  } else fadeHint();
+  hint.textContent = 'click to advance · click left third to go back';
 })();

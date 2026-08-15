@@ -1,6 +1,6 @@
 # In-Sid-ious by Sid - pitch deck
 
-A 15-slide static presentation. Auto-advances unattended on a table, drives manually during judging.
+A 15-slide static presentation. It advances only when the presenter clicks: the left third moves back and the rest of the canvas moves forward.
 
 This deck now lives at the repository root so the Docker build context, GitHub Pages workflow, and local editing all point at the same top-level files.
 
@@ -19,13 +19,8 @@ Rationale: 15 slides of fixed content have no state to manage and no components 
 
 | Input | Action |
 |---|---|
-| Auto-advance | 7s default; 9s on dense slides, 12s on the closer |
-| `Space` | Pause / resume, with a visible state change in the hint and progress bar |
-| `←` `→`, `PageUp` `PageDown` | Previous / next |
-| `Home` `End` | First / last slide |
 | Click | Left third back, right two-thirds forward |
-| `#7` | Deep-links to slide 7 and stays there |
-| `?autoplay=0` | Starts paused, for manual presenting |
+| `#7` | Deep-links to slide 7 |
 
 The URL hash tracks the current slide, so you can reload into wherever you were rehearsing.
 
@@ -46,7 +41,7 @@ The container listens on port 80 and Fly routes HTTP traffic there through `[htt
 
 - `index.html` - slide content and structure
 - `assets/deck.css` - presentation styling
-- `assets/deck.js` - navigation and autoplay
+- `assets/deck.js` - click-only navigation
 - `assets/qr-linkedin.png` - LinkedIn QR code
 - `assets/qr-portfolio.png` - portfolio QR code
 - `Dockerfile` - nginx static image at repo root
