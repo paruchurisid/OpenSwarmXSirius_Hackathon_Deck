@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for openswarmxsirius-hackathon-deck on 2026-08-15T20:43:25Z
+# fly.toml app configuration file generated for openswarmxsirius-hackathon-deck-ldelkq on 2026-08-15T20:56:41Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'openswarmxsirius-hackathon-deck'
-primary_region = 'ams'
+app = 'openswarmxsirius-hackathon-deck-ldelkq'
+primary_region = 'sjc'
 
 [build]
 
