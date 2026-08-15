@@ -1,7 +1,14 @@
 .git
 .github
-README.md
-fly.toml
-.dockerignore
 node_modules
+dist
+build
+out
+coverage
+shots
 *.log
+.DS_Store
+.idea
+.vscode
+.env
+.env.*
