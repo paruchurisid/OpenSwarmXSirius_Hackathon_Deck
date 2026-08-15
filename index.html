@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>In-Sid-ious by Sid</title>
-<meta name="description" content="A blue-team and red-team retention system by Sid.">
+<meta name="description" content="An offline, deterministic dual-loop retention-system demonstration.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/deck.css">
 <script>document.documentElement.className='js'</script>
@@ -25,10 +25,10 @@
     <span class="word">In-Sid-ious by Sid</span>
   </div>
   <div class="payload col" style="justify-content:center">
-    <h1 class="rv">Hi &#128075;<br>We're <span class="hi">In-Sid-ious by Sid</span></h1>
-    <p class="sub rv" style="animation-delay:.18s">Blue team defense. Red team attack. One closed loop.</p>
+    <h1 class="rv">Dual-Loop<br><span class="hi">Retention Swarm</span></h1>
+    <p class="sub rv" style="animation-delay:.18s">An inspectable, deterministic demo that protects retention value before a policy leak spreads.</p>
   </div>
-  <div class="foot"><span>In-Sid-ious by Sid</span><span>August 15th, 2026</span></div>
+  <div class="foot"><span>In-Sid-ious by Sid</span><a class="github-link" href="https://github.com/paruchurisid/In-Sid-ious">github.com/paruchurisid/In-Sid-ious</a><span>August 15th, 2026</span></div>
 </section>
 
 <!-- ══ 02 the problem ══ -->
@@ -44,8 +44,8 @@
   </div>
   <div class="head">
     <span class="eyebrow rv">The problem</span>
-    <h2 class="rv" style="animation-delay:.06s">Cancel flows fire too late. And they fire blind.</h2>
-    <p class="body rv" style="animation-delay:.12s">By the time someone clicks Cancel, the decision is three weeks old — and the offer that fires was never tested against anyone trying to game it.</p>
+    <h2 class="rv" style="animation-delay:.06s">Retention needs two answers, not one.</h2>
+    <p class="body rv" style="animation-delay:.12s">Why is the account at risk—and can the retention policy be exploited? The demo evaluates both questions from account telemetry.</p>
   </div>
   <div class="payload">
     <div class="tl rv" style="animation-delay:.2s">
@@ -53,21 +53,21 @@
         <div class="gapfill"></div>
         <div class="mk" style="left:0"></div>
         <div class="mk late" style="left:62%"></div>
-        <div class="gaplab" style="left:31%">30 days of silent, recoverable decay</div>
+        <div class="gaplab" style="left:31%">90-day telemetry window</div>
       </div>
       <div class="cap" style="left:0">
         <div class="cm">T&minus;30</div>
-        <div class="ct">The decision gets made.</div>
-        <div class="cd">Logins thin out, seats go unused, the integration is never wired up. Nobody is watching.</div>
+        <div class="ct">Usage falls behind entitlement.</div>
+        <div class="cd">Recent seat activity, feature adoption, health signals, and MRR make the risk visible.</div>
       </div>
       <div class="cap" style="left:62%">
         <div class="cm">T&minus;0</div>
-        <div class="ct">The offer fires.</div>
-        <div class="cd">A blanket discount, aimed at a mind already made up, never tested against abuse.</div>
+        <div class="ct">A policy path is evaluated.</div>
+        <div class="cd">A representative persona tests the current retention offer before the policy can be tightened.</div>
       </div>
     </div>
   </div>
-  <div class="foot"><span>The problem</span><span>02</span></div>
+  <div class="foot"><span>The problem</span><a class="github-link" href="https://github.com/paruchurisid/In-Sid-ious">github.com/paruchurisid/In-Sid-ious</a><span>02</span></div>
 </section>
 
 <!-- ══ 03 what it is ══ -->
@@ -83,7 +83,7 @@
   </div>
   <div class="head">
     <span class="eyebrow rv">What it is</span>
-    <h2 class="rv" style="animation-delay:.06s">Seven agents. Two loops. One closed system.</h2>
+    <h2 class="rv" style="animation-delay:.06s">Two loops. One inspectable decision path.</h2>
   </div>
   <div class="payload dia-wrap">
     <svg class="dia" viewBox="0 0 1104 330" role="img" aria-label="Loop 1 detects at-risk accounts and sends offers. Loop 2 attacks those offers with adversarial personas. Findings return to Loop 1 as hardened guardrails.">
@@ -94,32 +94,32 @@
       </defs>
 
       <rect x="466" y="140" width="172" height="50" rx="12" fill="#fff" stroke="rgba(10,10,16,.12)"/>
-      <text x="552" y="162" text-anchor="middle" font-size="14" font-weight="600">Coordination bus</text>
+      <text x="552" y="162" text-anchor="middle" font-size="14" font-weight="600">Demo orchestrator</text>
       <text x="552" y="179" text-anchor="middle" font-size="11.5" fill="#6B6B70">shared account state</text>
 
       <rect x="24" y="30" width="392" height="122" rx="14" fill="#fff" stroke="rgba(10,10,16,.12)"/>
       <text x="48" y="58" font-size="11" font-weight="700" letter-spacing="1.6" fill="#6B6B70">LOOP 1 · DEFEND</text>
-      <text x="48" y="84" font-size="19" font-weight="600">Ghost Churn</text>
-      <text x="48" y="108" font-size="13.5" fill="#6B6B70">Watches behaviour, scores risk, picks</text>
-      <text x="48" y="126" font-size="13.5" fill="#6B6B70">the intervention before the button.</text>
+      <text x="48" y="84" font-size="19" font-weight="600">Value realization</text>
+      <text x="48" y="108" font-size="13.5" fill="#6B6B70">Scores health and compares purchased</text>
+      <text x="48" y="126" font-size="13.5" fill="#6B6B70">capacity with actual use.</text>
 
       <rect x="24" y="186" width="392" height="122" rx="14" fill="#fff" stroke="rgba(10,10,16,.12)"/>
       <text x="48" y="214" font-size="11" font-weight="700" letter-spacing="1.6" fill="#6B6B70">LOOP 2 · ATTACK</text>
-      <text x="48" y="240" font-size="19" font-weight="600">Savage Subscriber</text>
-      <text x="48" y="264" font-size="13.5" fill="#6B6B70">Spawns adversarial personas and runs</text>
-      <text x="48" y="282" font-size="13.5" fill="#6B6B70">the real cancel flow against them.</text>
+      <text x="48" y="240" font-size="19" font-weight="600">Policy safety</text>
+      <text x="48" y="264" font-size="13.5" fill="#6B6B70">Replays a representative persona against</text>
+      <text x="48" y="282" font-size="13.5" fill="#6B6B70">the mock Sirius retention policy.</text>
 
       <rect x="688" y="30" width="392" height="122" rx="14" fill="#fff" stroke="rgba(10,10,16,.12)"/>
       <text x="712" y="58" font-size="11" font-weight="700" letter-spacing="1.6" fill="#6B6B70">OUTPUT</text>
-      <text x="712" y="84" font-size="19" font-weight="600">A targeted save offer</text>
-      <text x="712" y="108" font-size="13.5" fill="#6B6B70">Sized to the account, aimed at the</text>
-      <text x="712" y="126" font-size="13.5" fill="#6B6B70">actual complaint.</text>
+      <text x="712" y="84" font-size="19" font-weight="600">Account insight</text>
+      <text x="712" y="108" font-size="13.5" fill="#6B6B70">Utilization, ROI gap, churn probability,</text>
+      <text x="712" y="126" font-size="13.5" fill="#6B6B70">and MRR at risk for one account.</text>
 
       <rect x="688" y="186" width="392" height="122" rx="14" fill="#fff" stroke="rgba(10,10,16,.12)"/>
       <text x="712" y="214" font-size="11" font-weight="700" letter-spacing="1.6" fill="#6B6B70">OUTPUT</text>
       <text x="712" y="240" font-size="19" font-weight="600">A policy patch</text>
-      <text x="712" y="264" font-size="13.5" fill="#6B6B70">Every exploit the personas found,</text>
-      <text x="712" y="282" font-size="13.5" fill="#6B6B70">closed as a hard constraint.</text>
+      <text x="712" y="264" font-size="13.5" fill="#6B6B70">Only tighten-only changes are applied,</text>
+      <text x="712" y="282" font-size="13.5" fill="#6B6B70">then the persona is replayed.</text>
 
       <path class="halo" d="M416 91 H552 V140"/>
       <path class="line" d="M416 91 H552 V140" marker-end="url(#ar)"/>
@@ -138,7 +138,7 @@
       </g>
     </svg>
   </div>
-  <div class="foot"><span>What it is</span><span>03</span></div>
+  <div class="foot"><span>What it is</span><a class="github-link" href="https://github.com/paruchurisid/In-Sid-ious">github.com/paruchurisid/In-Sid-ious</a><span>03</span></div>
 </section>
 
 <!-- ══ 04 loop one ══ -->
@@ -154,21 +154,21 @@
   </div>
   <div class="head">
     <span class="eyebrow rv">Loop one</span>
-    <h2 class="rv" style="animation-delay:.06s">Catch them before they reach the button.</h2>
+    <h2 class="rv" style="animation-delay:.06s">Start with the account’s unrealized value.</h2>
   </div>
   <div class="payload">
     <div class="card" style="flex:1;align-self:stretch;animation-delay:.14s">
       <div class="bar">
         <div class="lights"><b></b><b></b><b></b></div>
         <span class="ttl">Dormancy Watchdog</span><span class="sp"></span>
-        <span class="p p-run"><span class="p-dot"></span>Running</span>
-        <span class="p p-sim">Simulated</span>
+        <span class="p p-run"><span class="p-dot"></span>Deterministic</span>
+        <span class="p p-sim">Offline demo</span>
       </div>
       <div class="cbody">
-        <div class="step"><span class="ic done">&#10003;</span><span class="sl">Scanned <strong>2,000</strong> accounts <em>· 18 months of telemetry</em></span></div>
-        <div class="step"><span class="ic done">&#10003;</span><span class="sl">Flagged <strong>47</strong> for silent decay</span></div>
-        <div class="step"><span class="ic now"></span><span class="sl">Enterprise account &#183; <strong>82% churn probability</strong><br><em>seat underutilization</em></span></div>
-        <div class="step pend"><span class="ic wait"></span><span class="sl">Hand off to Offer Composer</span></div>
+        <div class="step"><span class="ic done">&#10003;</span><span class="sl">Reads <strong>10 accounts</strong> <em>· 90-day deterministic fixture</em></span></div>
+        <div class="step"><span class="ic done">&#10003;</span><span class="sl">Scores account health and creates an at-risk cohort</span></div>
+        <div class="step"><span class="ic now"></span><span class="sl">Northstar Logistics &#183; <strong>82% churn probability</strong><br><em>seat underutilization</em></span></div>
+        <div class="step pend"><span class="ic wait"></span><span class="sl">Pass account context to Value Realization</span></div>
       </div>
     </div>
     <div class="card" style="flex:1;align-self:stretch;animation-delay:.26s">
@@ -176,18 +176,18 @@
         <div class="lights"><b></b><b></b><b></b></div>
         <span class="ttl">Value Realization</span><span class="sp"></span>
         <span class="p p-agent">Agent</span>
-        <span class="p p-sim">Simulated</span>
+        <span class="p p-sim">Deterministic</span>
       </div>
       <div class="cbody">
-        <div class="kv"><b>Tier</b><span>Pro</span></div>
-        <div class="kv"><b>Seats purchased</b><span>50</span></div>
+        <div class="kv"><b>Tier</b><span>Business</span></div>
+        <div class="kv"><b>Seats purchased</b><span>40</span></div>
         <div class="kv"><b>Seats active</b><span>8</span></div>
         <div class="kv"><b>Webhooks</b><span>never configured</span></div>
         <div class="step" style="margin-top:11px"><span class="ic now"></span><span class="sl">They never reached the value they paid for.<br><em>Discount is the wrong fix. Onboarding is the fix.</em></span></div>
       </div>
     </div>
   </div>
-  <div class="foot"><span>Loop one · defend</span><span>04</span></div>
+  <div class="foot"><span>Loop one · defend</span><a class="github-link" href="https://github.com/paruchurisid/In-Sid-ious">github.com/paruchurisid/In-Sid-ious</a><span>04</span></div>
 </section>
 
 <!-- ══ 05 loop two ══ -->
@@ -203,34 +203,34 @@
   </div>
   <div class="head">
     <span class="eyebrow rv">Loop two</span>
-    <h2 class="rv" style="animation-delay:.06s">Then attack our own save offers.</h2>
+    <h2 class="rv" style="animation-delay:.06s">Then replay the policy against a representative persona.</h2>
   </div>
   <div class="payload">
     <div class="card" style="flex:1;align-self:stretch;animation-delay:.14s">
       <div class="bar">
         <div class="lights"><b></b><b></b><b></b></div>
-        <span class="ttl">Browser agent</span><span class="sp"></span>
-        <span class="p p-live"><span class="p-dot"></span>Live</span>
-        <span class="p p-sim">Simulated</span>
+        <span class="ttl">Mock Sirius adapter</span><span class="sp"></span>
+        <span class="p p-live"><span class="p-dot"></span>Replay</span>
+        <span class="p p-sim">Deterministic</span>
       </div>
       <div class="cbody">
-        <div class="url"><span class="lock">&#128274;</span>app.example.com/settings/billing/cancel</div>
+        <div class="url"><span class="lock">&#128274;</span>mock Sirius retention policy · v1</div>
         <div style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:12px">
           <span class="p p-run"><span class="p-dot"></span>The Discount Grifter</span>
-          <span class="p p-agent">spawned from account #4471</span>
+          <span class="p p-agent">generated from account context</span>
         </div>
-        <div class="step"><span class="ic done">&#10003;</span><span class="sl">Opened the cancellation modal</span></div>
-        <div class="step"><span class="ic done">&#10003;</span><span class="sl">Selected reason: <em>&ldquo;too expensive&rdquo;</em></span></div>
-        <div class="step"><span class="ic done">&#10003;</span><span class="sl">Declined the first offer &#183; 10% for 3 months</span></div>
-        <div class="step"><span class="ic now"></span><span class="sl">Escalated &#183; offered <strong>40% for 12 months</strong>, uncapped</span></div>
-        <div class="step pend"><span class="ic wait"></span><span class="sl">Replay to confirm the exploit repeats</span></div>
+        <div class="step"><span class="ic done">&#10003;</span><span class="sl">Persona Generator creates a negotiation archetype</span></div>
+        <div class="step"><span class="ic done">&#10003;</span><span class="sl">Adapter evaluates the current offer rule</span></div>
+        <div class="step"><span class="ic done">&#10003;</span><span class="sl">Current policy returns <em>40% for six months</em></span></div>
+        <div class="step"><span class="ic now"></span><span class="sl">Exploit Auditor flags <strong>uncapped discount</strong></span></div>
+        <div class="step pend"><span class="ic wait"></span><span class="sl">Replay the same persona after the patch</span></div>
       </div>
     </div>
     <div style="flex:0 0 336px;align-self:stretch;display:flex;flex-direction:column;justify-content:center">
-      <p class="body rv" style="animation-delay:.3s;font-size:19px;margin:0">Twelve churn archetypes, each with a motive. The Grifter wants the discount, not the product. If an offer can be farmed, the persona farms it before a real customer does.</p>
+      <p class="body rv" style="animation-delay:.3s;font-size:19px;margin:0">The demo intentionally uses a simulated persona and a mock adapter. That makes every decision reproducible, inspectable, and safe to evaluate locally.</p>
     </div>
   </div>
-  <div class="foot"><span>Loop two · attack</span><span>05</span></div>
+  <div class="foot"><span>Loop two · attack</span><a class="github-link" href="https://github.com/paruchurisid/In-Sid-ious">github.com/paruchurisid/In-Sid-ious</a><span>05</span></div>
 </section>
 
 <!-- ══ 06 the closure ══ -->
@@ -246,29 +246,29 @@
   </div>
   <div class="head">
     <span class="eyebrow rv">The closure</span>
-    <h2 class="rv" style="animation-delay:.06s">The attackers harden the defense.</h2>
-    <p class="body rv" style="animation-delay:.12s">Findings compile into a policy patch that tightens the offers Loop 1 depends on. No human in the loop.</p>
+    <h2 class="rv" style="animation-delay:.06s">A replay can tighten the policy—not loosen it.</h2>
+    <p class="body rv" style="animation-delay:.12s">The demo applies only safe, tighten-only operations and compares the same persona’s Margin-Adjusted Save Rate before and after.</p>
   </div>
   <div class="payload">
     <div class="nums rv" style="animation-delay:.2s;width:100%">
       <div class="num">
         <div class="gn">01</div>
-        <div class="gt">Auditor finds the leak</div>
-        <div class="gd">Every offer the personas extracted is priced against the LTV it was meant to protect.</div>
+        <div class="gt">Auditor finds the exploit</div>
+        <div class="gd">An uncapped discount is identified as a repeatable, margin-destroying concession.</div>
       </div>
       <div class="num">
         <div class="gn">02</div>
-        <div class="gt">Profiler scores the fit</div>
-        <div class="gd">Did the offer answer the complaint the customer actually stated, or just throw money at it?</div>
+        <div class="gt">Synthesizer proposes limits</div>
+        <div class="gd">The patch can lower a ceiling, shorten duration, extend a cooldown, or substitute a value-recovery action.</div>
       </div>
       <div class="num">
         <div class="gn">03</div>
         <div class="gt">Policy tightens</div>
-        <div class="gd">Ceilings drop, cooldowns extend, and the exploited path stops being offered at all.</div>
+        <div class="gd">The same persona is replayed; MASR improves from 0.8000 to 0.9500 in the demo cycle.</div>
       </div>
     </div>
   </div>
-  <div class="foot"><span>The closure</span><span>06</span></div>
+  <div class="foot"><span>The closure</span><a class="github-link" href="https://github.com/paruchurisid/In-Sid-ious">github.com/paruchurisid/In-Sid-ious</a><span>06</span></div>
 </section>
 
 <!-- ══ 07 the roster ══ -->
@@ -283,41 +283,41 @@
     <span class="word">In-Sid-ious by Sid</span>
   </div>
   <div class="head">
-    <span class="eyebrow rv">Blue team / Red team</span>
-    <h2 class="rv" style="animation-delay:.06s">Defense on the left. Attack on the right.</h2>
+    <span class="eyebrow rv">System components</span>
+    <h2 class="rv" style="animation-delay:.06s">Small, deterministic components. One closed-loop run.</h2>
   </div>
   <div class="payload">
     <div class="card" style="width:100%;align-self:stretch;animation-delay:.14s">
       <div class="bar">
         <div class="lights"><b></b><b></b><b></b></div>
-        <span class="ttl">Blue team / Red team</span><span class="sp"></span>
-        <span class="p p-sim">Simulated</span>
+        <span class="ttl">Dual-Loop Retention Swarm</span><span class="sp"></span>
+        <span class="p p-sim">Offline-safe</span>
       </div>
       <div class="cbody split">
         <div class="team-col">
-          <div class="team-tag blue">Blue Team · Defense</div>
+          <div class="team-tag blue">Value-realization loop</div>
           <table class="ktab roster">
             <tbody>
-              <tr><td>Dormancy Watchdog</td><td class="dim" style="text-align:left">Finds silent decay before billing is hit.</td></tr>
-              <tr><td>Value Realization</td><td class="dim" style="text-align:left">Surfaces value the account never activated.</td></tr>
-              <tr><td>Offer Composer</td><td class="dim" style="text-align:left">Builds the right save path for the complaint.</td></tr>
+              <tr><td>Dormancy Watchdog</td><td class="dim" style="text-align:left">Scores health and creates an at-risk cohort.</td></tr>
+              <tr><td>Value Realization Agent</td><td class="dim" style="text-align:left">Finds unused capacity and high-value features.</td></tr>
+              <tr><td>Control Room</td><td class="dim" style="text-align:left">Shows utilization, ROI gap, churn risk, and MRR.</td></tr>
             </tbody>
           </table>
         </div>
         <div class="team-col">
-          <div class="team-tag red">Red Team · Attack</div>
+          <div class="team-tag red">Policy-safety loop</div>
           <table class="ktab roster">
             <tbody>
-              <tr><td>Persona Forge</td><td class="dim" style="text-align:left">Creates churn archetypes from real account shapes.</td></tr>
-              <tr><td>Savage Subscriber</td><td class="dim" style="text-align:left">Drives the live cancel flow to break the offer.</td></tr>
-              <tr><td>Margin Auditor</td><td class="dim" style="text-align:left">Prices each concession against retained value.</td></tr>
+              <tr><td>Persona Generator</td><td class="dim" style="text-align:left">Creates a cancellation or negotiation persona.</td></tr>
+              <tr><td>Exploit Auditor</td><td class="dim" style="text-align:left">Detects unsafe concessions in a policy replay.</td></tr>
+              <tr><td>Policy Synthesizer</td><td class="dim" style="text-align:left">Applies only tighten-only policy operations.</td></tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
-  <div class="foot"><span>Blue team / Red team</span><span>07</span></div>
+  <div class="foot"><span>Blue team / Red team</span><a class="github-link" href="https://github.com/paruchurisid/In-Sid-ious">github.com/paruchurisid/In-Sid-ious</a><span>07</span></div>
 </section>
 
 <!-- ══ 08 the catch ══ -->
@@ -333,27 +333,27 @@
   </div>
   <div class="head">
     <span class="eyebrow rv">The catch</span>
-    <h2 class="rv" style="animation-delay:.06s">It found the leak in 40 seconds.</h2>
+    <h2 class="rv" style="animation-delay:.06s">The demo exposes a repeatable discount leak.</h2>
   </div>
   <div class="payload">
     <div class="card" style="flex:1.25;align-self:stretch;animation-delay:.14s">
       <div class="bar">
         <div class="lights"><b></b><b></b><b></b></div>
-        <span class="ttl">Margin Auditor</span><span class="sp"></span>
-        <span class="p p-red">Margin leak</span>
-        <span class="p p-sim">Simulated</span>
+        <span class="ttl">Exploit Auditor</span><span class="sp"></span>
+        <span class="p p-red">Critical finding</span>
+        <span class="p p-sim">Deterministic</span>
       </div>
       <div class="cbody">
-        <div class="figure">$18.2K</div>
-        <div class="delta">annualized exposure, if this offer keeps firing as written</div>
+        <div class="figure">$72K</div>
+        <div class="delta">annualized exposure in the discount-grifter replay</div>
         <div style="margin-top:14px">
-          <div class="kv"><b>Trigger</b><span>uncapped 40% discount</span></div>
+          <div class="kv"><b>Trigger</b><span>40% discount for six months</span></div>
           <div class="kv"><b>Served to</b><span>low price-sensitivity persona</span></div>
-          <div class="kv"><b>Per-account cost</b><span>$450 LTV erosion</span></div>
+          <div class="kv"><b>Finding</b><span>uncapped_discount</span></div>
         </div>
         <div class="btns">
-          <span class="btn dgr">Block offer</span>
-          <span class="btn sec">Cap at 15%</span>
+          <span class="btn dgr">Flag exploit</span>
+          <span class="btn sec">Cap at 30%</span>
           <span class="btn pri">Patch policy</span>
         </div>
       </div>
@@ -361,17 +361,17 @@
     <div class="card" style="flex:1;align-self:stretch;animation-delay:.26s">
       <div class="bar">
         <div class="lights"><b></b><b></b><b></b></div>
-        <span class="ttl">Policy Profiler &#183; verdict</span><span class="sp"></span>
-        <span class="p p-sim">Simulated</span>
+        <span class="ttl">Policy Synthesizer &#183; patch</span><span class="sp"></span>
+        <span class="p p-sim">Tighten-only</span>
       </div>
       <div class="cbody">
-        <div class="figure" style="color:#B4143C">42<span style="font-size:24px;color:var(--cdim)">/100</span></div>
-        <div class="delta">offer-to-complaint fit</div>
-        <p style="font-size:15px;line-height:1.55;color:var(--cink);margin-top:16px">The offer ignored the stated complaint. They asked for fewer seats and got a discount on the seats they weren't using.</p>
+        <div class="figure" style="color:#15803D">0.9500</div>
+        <div class="delta">MASR after replay</div>
+        <p style="font-size:15px;line-height:1.55;color:var(--cink);margin-top:16px">Lower ceiling to 30%, shorten to three months, extend cooldown to 180 days, and replace the grifter offer with a workflow consultation.</p>
       </div>
     </div>
   </div>
-  <div class="foot"><span>The catch</span><span>08</span></div>
+  <div class="foot"><span>The catch</span><a class="github-link" href="https://github.com/paruchurisid/In-Sid-ious">github.com/paruchurisid/In-Sid-ious</a><span>08</span></div>
 </section>
 
 <!-- ══ 09 the metric ══ -->
@@ -387,8 +387,8 @@
   </div>
   <div class="head">
     <span class="eyebrow rv">The metric</span>
-    <h2 class="rv" style="animation-delay:.06s">Save rate is the wrong number.</h2>
-    <p class="body rv" style="animation-delay:.12s">Saving everyone by giving away 50% forever isn't retention, it's a slower cancellation.</p>
+    <h2 class="rv" style="animation-delay:.06s">Measure retained value, not just saves.</h2>
+    <p class="body rv" style="animation-delay:.12s">MASR credits a policy only for the value it retains after the concession cost.</p>
   </div>
   <div class="payload">
     <div class="rv" style="animation-delay:.2s">
@@ -400,7 +400,7 @@
       </div>
     </div>
   </div>
-  <div class="foot"><span>The metric</span><span>09</span></div>
+  <div class="foot"><span>The metric</span><a class="github-link" href="https://github.com/paruchurisid/In-Sid-ious">github.com/paruchurisid/In-Sid-ious</a><span>09</span></div>
 </section>
 
 <!-- ══ 10 control ══ -->
@@ -416,36 +416,36 @@
   </div>
   <div class="head">
     <span class="eyebrow rv">Control</span>
-    <h2 class="rv" style="animation-delay:.06s">Autonomous, on a short leash.</h2>
-    <p class="body rv" style="animation-delay:.12s">An agent with unbounded write access to pricing is a liability, so we bounded it.</p>
+    <h2 class="rv" style="animation-delay:.06s">The demo can reduce exposure, never increase it.</h2>
+    <p class="body rv" style="animation-delay:.12s">Policy changes are constrained to operations that tighten an offer or replace it with value recovery.</p>
   </div>
   <div class="payload">
     <div class="card" style="flex:1;align-self:stretch;animation-delay:.18s">
       <div class="bar">
         <div class="lights"><b></b><b></b><b></b></div>
-        <span class="ttl">Pricing permissions</span><span class="sp"></span>
-        <span class="p p-sim">Simulated</span>
+        <span class="ttl">Policy-engine constraints</span><span class="sp"></span>
+        <span class="p p-sim">Deterministic</span>
       </div>
       <div class="cbody" style="display:flex;flex-direction:column;justify-content:center">
         <div class="perm on">
           <div class="sw"></div>
-          <div><div class="pl">Lower a discount ceiling</div><div class="pd">Tightens spend. Runs unattended.</div></div>
+          <div><div class="pl">Lower a discount ceiling</div><div class="pd">Tightens spend in the policy engine.</div></div>
           <span class="sp"></span><span class="p p-ok">Always allowed</span>
         </div>
         <div class="perm on">
           <div class="sw"></div>
-          <div><div class="pl">Extend a cooldown</div><div class="pd">Slows re-offers. Runs unattended.</div></div>
+          <div><div class="pl">Shorten duration or extend cooldown</div><div class="pd">Limits repeat concessions.</div></div>
           <span class="sp"></span><span class="p p-ok">Always allowed</span>
         </div>
         <div class="perm ask">
           <div class="sw"></div>
-          <div><div class="pl">Loosen any constraint</div><div class="pd">Anything that can cost money stops here.</div></div>
-          <span class="sp"></span><span class="p p-red">Ask every time</span>
+          <div><div class="pl">Increase a monetary concession</div><div class="pd">Outside the demo’s permitted operation set.</div></div>
+          <span class="sp"></span><span class="p p-red">Not permitted</span>
         </div>
       </div>
     </div>
   </div>
-  <div class="foot"><span>Control</span><span>10</span></div>
+  <div class="foot"><span>Control</span><a class="github-link" href="https://github.com/paruchurisid/In-Sid-ious">github.com/paruchurisid/In-Sid-ious</a><span>10</span></div>
 </section>
 
 <!-- ══ 11 built on ══ -->
@@ -460,33 +460,33 @@
     <span class="word">In-Sid-ious by Sid</span>
   </div>
   <div class="head">
-    <span class="eyebrow rv">Built on</span>
-    <h2 class="rv" style="animation-delay:.06s">Day one, already wired.</h2>
+    <span class="eyebrow rv">Implementation</span>
+    <h2 class="rv" style="animation-delay:.06s">A local demo stack built to show the decisions.</h2>
   </div>
   <div class="payload">
     <div class="card" style="flex:1;align-self:stretch;animation-delay:.14s">
       <div class="bar">
         <div class="lights"><b></b><b></b><b></b></div>
-        <span class="ttl">Inherited from the platform</span><span class="sp"></span>
+        <span class="ttl">Repository implementation</span><span class="sp"></span>
       </div>
       <div class="cbody" style="display:flex;align-items:center">
         <table class="ktab">
-          <thead><tr><th>What we'd normally build</th><th>Status</th></tr></thead>
+          <thead><tr><th>Component</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td>Agent spawning and the tool loop</td><td><span class="p p-ok">Done</span></td></tr>
-            <tr><td>A browser agent that drives real pages</td><td><span class="p p-ok">Done</span></td></tr>
-            <tr><td>Scheduling and recurring runs</td><td><span class="p p-ok">Done</span></td></tr>
-            <tr><td>UI primitives for agent output</td><td><span class="p p-ok">Done</span></td></tr>
-            <tr><td>Connected integrations and permissions</td><td><span class="p p-ok">Done</span></td></tr>
+            <tr><td>Python agents + policy engine</td><td><span class="p p-ok">Implemented</span></td></tr>
+            <tr><td>FastAPI telemetry and insight endpoints</td><td><span class="p p-ok">Implemented</span></td></tr>
+            <tr><td>React/Vite control room</td><td><span class="p p-ok">Implemented</span></td></tr>
+            <tr><td>Pydantic contracts and economics tests</td><td><span class="p p-ok">Implemented</span></td></tr>
+            <tr><td>Ten-account deterministic fixture</td><td><span class="p p-ok">Implemented</span></td></tr>
           </tbody>
         </table>
       </div>
     </div>
     <div style="flex:0 0 320px;align-self:stretch;display:flex;flex-direction:column;justify-content:center">
-      <p class="body rv" style="animation-delay:.28s;font-size:19px;margin:0">Everything above is plumbing we didn't write. What we built is the part that's ours: the two loops, and the closure between them.</p>
+      <p class="body rv" style="animation-delay:.28s;font-size:19px;margin:0">No CRM, billing provider, or production model endpoint is connected. The system is deliberately inspectable and repeatable for local evaluation.</p>
     </div>
   </div>
-  <div class="foot"><span>Built on</span><span>11</span></div>
+  <div class="foot"><span>Built on</span><a class="github-link" href="https://github.com/paruchurisid/In-Sid-ious">github.com/paruchurisid/In-Sid-ious</a><span>11</span></div>
 </section>
 
 <!-- ══ 12 under the hood ══ -->
@@ -502,19 +502,19 @@
   </div>
   <div class="head">
     <span class="eyebrow rv">Under the hood</span>
-    <h2 class="rv" style="animation-delay:.06s">What's actually running.</h2>
+    <h2 class="rv" style="animation-delay:.06s">What the demo actually runs.</h2>
   </div>
   <div class="payload col" style="justify-content:center;gap:44px">
     <div class="trip rv" style="animation-delay:.16s">
-      <div class="stat"><div class="stat-k">7</div><div class="stat-v">agents in the swarm</div></div>
-      <div class="stat"><div class="stat-k">12</div><div class="stat-v">churn archetypes simulated</div></div>
-      <div class="stat"><div class="stat-k">6</div><div class="stat-v">vulnerability classes detected</div></div>
+      <div class="stat"><div class="stat-k">10</div><div class="stat-v">accounts in the fixture</div></div>
+      <div class="stat"><div class="stat-k">90</div><div class="stat-v">days of telemetry</div></div>
+      <div class="stat"><div class="stat-k">2</div><div class="stat-v">closed decision loops</div></div>
     </div>
     <div class="rv" style="animation-delay:.3s;font-size:14px;color:var(--ink3);letter-spacing:.02em">
-      2,000 synthetic accounts &#183; 18 months of telemetry &#183; 1.1M events
+      Deterministic agents &#183; simulated persona replay &#183; mock Sirius adapter
     </div>
   </div>
-  <div class="foot"><span>Under the hood</span><span>12</span></div>
+  <div class="foot"><span>Under the hood</span><a class="github-link" href="https://github.com/paruchurisid/In-Sid-ious">github.com/paruchurisid/In-Sid-ious</a><span>12</span></div>
 </section>
 
 <!-- ══ 13 the demo ══ -->
@@ -530,7 +530,7 @@
   </div>
   <div class="head">
     <span class="eyebrow rv">The demo</span>
-    <h2 class="rv" style="animation-delay:.06s">Three minutes, one full cycle.</h2>
+    <h2 class="rv" style="animation-delay:.06s">One account, one policy replay, one verified outcome.</h2>
   </div>
   <div class="payload">
     <div class="card" style="width:100%;align-self:stretch;animation-delay:.14s">
@@ -543,17 +543,17 @@
         <table class="ktab">
           <thead><tr><th style="width:12%">Time</th><th style="text-align:left">What</th><th style="width:18%">Status</th></tr></thead>
           <tbody>
-            <tr><td class="mono">0:00</td><td style="text-align:left">The problem, and the shape of the swarm</td><td><span class="p p-run">Now</span></td></tr>
-            <tr><td class="mono">0:45</td><td style="text-align:left">Ghost Churn catches the account</td><td><span class="p p-sim">Queued</span></td></tr>
-            <tr><td class="mono">1:15</td><td style="text-align:left">Savage Subscriber attacks the cancel flow</td><td><span class="p p-sim">Queued</span></td></tr>
-            <tr><td class="mono">1:45</td><td style="text-align:left">Margin leak detected</td><td><span class="p p-sim">Queued</span></td></tr>
-            <tr><td class="mono">2:30</td><td style="text-align:left">Policy patched, persona replayed, offer holds</td><td><span class="p p-sim">Queued</span></td></tr>
+            <tr><td class="mono">0:00</td><td style="text-align:left">Select an account in the Swarm Ops Control Center</td><td><span class="p p-run">Now</span></td></tr>
+            <tr><td class="mono">0:30</td><td style="text-align:left">Inspect utilization, ROI gap, churn probability, and MRR at risk</td><td><span class="p p-sim">Queued</span></td></tr>
+            <tr><td class="mono">1:00</td><td style="text-align:left">Replay a persona against the current mock Sirius policy</td><td><span class="p p-sim">Queued</span></td></tr>
+            <tr><td class="mono">1:30</td><td style="text-align:left">Audit the concession and propose a tighten-only patch</td><td><span class="p p-sim">Queued</span></td></tr>
+            <tr><td class="mono">2:00</td><td style="text-align:left">Replay the same persona and compare MASR: 0.8000 → 0.9500</td><td><span class="p p-sim">Queued</span></td></tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
-  <div class="foot"><span>The demo</span><span>13</span></div>
+  <div class="foot"><span>The demo</span><a class="github-link" href="https://github.com/paruchurisid/In-Sid-ious">github.com/paruchurisid/In-Sid-ious</a><span>13</span></div>
 </section>
 
 <!-- ══ 14 close ══ -->
@@ -568,16 +568,16 @@
     <span class="word">In-Sid-ious by Sid</span>
   </div>
   <div class="payload col" style="justify-content:center">
-    <h2 class="rv" style="font-size:64px;max-width:1040px">We turned the cancel flow into a training ground.</h2>
+    <h2 class="rv" style="font-size:64px;max-width:1040px">Retention policy should learn before it spends.</h2>
     <p class="rv" style="animation-delay:.2s;margin-top:36px;font-family:var(--mono);font-size:20px;color:var(--ink2)">
-      <a href="https://github.com/your-org/dual-loop-retention-swarm" style="color:var(--hi);text-decoration:none;border-bottom:1px solid rgba(140,168,255,.4);padding-bottom:2px">github.com/your-org/dual-loop-retention-swarm</a>
+      <a href="https://github.com/paruchurisid/In-Sid-ious" style="color:var(--hi);text-decoration:none;border-bottom:1px solid rgba(140,168,255,.4);padding-bottom:2px">github.com/paruchurisid/In-Sid-ious</a>
     </p>
   </div>
-  <div class="foot"><span>In-Sid-ious by Sid</span><span>14</span></div>
+  <div class="foot"><span>In-Sid-ious by Sid</span><a class="github-link" href="https://github.com/paruchurisid/In-Sid-ious">github.com/paruchurisid/In-Sid-ious</a><span>14</span></div>
 </section>
 
-<!-- â•â• 15 about me â•â• -->
-<section class="slide t-deep" aria-label="Slide 15: About me" aria-hidden="true">
+<!-- â•â• 15 source and run â•â• -->
+<section class="slide t-deep" aria-label="Slide 15: Source and run" aria-hidden="true">
   <div class="field"><i></i></div>
   <div class="mark">
     <svg width="30" height="30" viewBox="0 0 34 34" fill="none" aria-hidden="true">
@@ -588,43 +588,43 @@
     <span class="word">In-Sid-ious by Sid</span>
   </div>
   <div class="head">
-    <span class="eyebrow rv">About me</span>
-    <h2 class="rv" style="animation-delay:.06s">Sid Paruchuri</h2>
-    <p class="body rv" style="animation-delay:.12s">Builder of systems that think in both directions: defend the product, then attack it until it gets better.</p>
+    <span class="eyebrow rv">Source and run locally</span>
+    <h2 class="rv" style="animation-delay:.06s">The full demo is in the repository.</h2>
+    <p class="body rv" style="animation-delay:.12s">Generate the telemetry fixture, run the cycle, then open the control room to inspect account-specific decisions.</p>
   </div>
   <div class="payload about-grid">
     <div class="card about-card" style="animation-delay:.16s">
       <div class="bar">
         <div class="lights"><b></b><b></b><b></b></div>
-        <span class="ttl">LinkedIn</span><span class="sp"></span>
-        <span class="p p-agent">Connect</span>
+        <span class="ttl">Step 1 · Install</span><span class="sp"></span>
+        <span class="p p-agent">Python</span>
       </div>
       <div class="cbody qr-card">
-        <img class="qr" src="assets/qr-linkedin.png" alt="LinkedIn QR code">
+        <div class="qr repo-mark" aria-label="Repository source">IN<br>SID<br>IOUS</div>
         <div class="qr-copy">
-          <div class="figure" style="font-size:28px">LinkedIn</div>
-          <p class="body" style="font-size:16px;max-width:none;margin-top:10px">Scan to connect and see my work history.</p>
-          <div class="url"><span class="lock">&#128279;</span>linkedin.com/in/siddhartha-paruchuri-34a353293</div>
+          <div class="figure" style="font-size:28px">Install + run</div>
+          <p class="body" style="font-size:16px;max-width:none;margin-top:10px">Install the package, generate the deterministic fixture, then run the demo cycle.</p>
+          <div class="url"><span class="lock">&#128279;</span>python -m pip install -e . · make generate · make demo-cycle</div>
         </div>
       </div>
     </div>
     <div class="card about-card" style="animation-delay:.28s">
       <div class="bar">
         <div class="lights"><b></b><b></b><b></b></div>
-        <span class="ttl">Portfolio</span><span class="sp"></span>
-        <span class="p p-run">Live</span>
+        <span class="ttl">Step 2 · Inspect</span><span class="sp"></span>
+        <span class="p p-run">Control room</span>
       </div>
       <div class="cbody qr-card">
-        <img class="qr" src="assets/qr-portfolio.png" alt="Portfolio QR code">
+        <div class="qr repo-mark" aria-label="Repository source">DEMO<br>RUN<br>LOCAL</div>
         <div class="qr-copy">
-          <div class="figure" style="font-size:28px">Portfolio</div>
-          <p class="body" style="font-size:16px;max-width:none;margin-top:10px">Scan to view my projects and website.</p>
-          <div class="url"><span class="lock">&#128279;</span>paruchurisid.github.io</div>
+          <div class="figure" style="font-size:28px">Open the dashboard</div>
+          <p class="body" style="font-size:16px;max-width:none;margin-top:10px">Start the API at localhost, select an account, and examine the remediation inspector and persona replay.</p>
+          <div class="url"><span class="lock">&#128279;</span>make api · http://127.0.0.1:8000</div>
         </div>
       </div>
     </div>
   </div>
-  <div class="foot"><span>About me</span><span>15</span></div>
+  <div class="foot"><span>Source and run</span><a class="github-link" href="https://github.com/paruchurisid/In-Sid-ious">github.com/paruchurisid/In-Sid-ious</a><span>15</span></div>
 </section>
 
 </div></div>
