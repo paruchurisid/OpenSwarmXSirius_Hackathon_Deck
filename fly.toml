@@ -1,14 +1,21 @@
-app = "in-sid-ious-by-sid"
-primary_region = "iad"
+# fly.toml app configuration file generated for openswarmxsirius-hackathon-deck on 2026-08-15T20:43:25Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'openswarmxsirius-hackathon-deck'
+primary_region = 'ams'
+
+[build]
 
 [http_service]
-  internal_port = 80
+  internal_port = 8080
   force_https = true
-  auto_stop_machines = "stop"
+  auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
-  processes = ["app"]
+  processes = ['app']
 
 [[vm]]
-  size = "shared-cpu-1x"
-  memory = "256mb"
+  size = 'shared-cpu-1x'
+  memory = '256mb'
