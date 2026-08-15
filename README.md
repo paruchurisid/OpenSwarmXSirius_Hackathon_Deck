@@ -2,6 +2,8 @@
 
 A 15-slide static presentation. Auto-advances unattended on a table, drives manually during judging.
 
+This deck now lives at the repository root so the Docker build context, GitHub Pages workflow, and local editing all point at the same top-level files.
+
 ## Stack decision
 
 Hand-written HTML, CSS and vanilla JS. No framework, no build step.
@@ -29,7 +31,7 @@ The URL hash tracks the current slide, so you can reload into wherever you were 
 
 ## Deploying
 
-This is a static site served by `nginx:alpine` from the contents of this directory. There is no build step.
+This is a static site served by `nginx:alpine` from the contents of the repository root. There is no build step.
 
 ### Fly.io
 
@@ -47,6 +49,6 @@ The container listens on port 80 and Fly routes HTTP traffic there through `[htt
 - `assets/deck.js` - navigation and autoplay
 - `assets/qr-linkedin.png` - LinkedIn QR code
 - `assets/qr-portfolio.png` - portfolio QR code
-- `Dockerfile` - nginx static image
-- `fly.toml` - Fly configuration
-- `.dockerignore` - build context cleanup
+- `Dockerfile` - nginx static image at repo root
+- `fly.toml` - Fly configuration at repo root
+- `.dockerignore` - build context cleanup at repo root
